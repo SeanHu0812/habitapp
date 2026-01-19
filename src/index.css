@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #FFF8E7;
+  color: #5D4E37;
+}
+
+#root {
+  height: 100%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF8E7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8B7355;
+  border-radius: 3px;
+}
+
+/* Pixel art rendering */
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Cozy button styles */
+.cozy-btn {
+  @apply px-6 py-3 rounded-2xl font-semibold transition-all duration-200;
+  @apply active:scale-95 hover:brightness-105;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.cozy-btn:active {
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+  transform: translateY(2px);
+}
+
+.cozy-btn-primary {
+  @apply bg-softPink text-darkBrown;
+}
+
+.cozy-btn-secondary {
+  @apply bg-softMint text-darkBrown;
+}
+
+.cozy-btn-accent {
+  @apply bg-softLavender text-darkBrown;
+}
+
+/* Card styles */
+.cozy-card {
+  @apply bg-white/80 backdrop-blur-sm rounded-3xl p-4;
+  box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1);
+}
+
+/* Animal container */
+.animal-container {
+  @apply relative cursor-pointer transition-transform duration-200;
+}
+
+.animal-container:hover {
+  transform: scale(1.05);
+}
+
+.animal-container:active {
+  transform: scale(0.98);
+}
+
+/* State-based animations */
+.state-thriving {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.state-neutral {
+  animation: float 3s ease-in-out infinite;
+}
+
+.state-resting {
+  animation: pulse 4s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-12px) scale(1.02); }
+  50% { transform: translateY(0) scale(1); }
+  75% { transform: translateY(-6px) scale(1.01); }
+}
+
+/* Sparkle effect */
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #FFD700 0%, transparent 70%);
+  border-radius: 50%;
+  animation: sparkle 1s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes sparkle {
+  0% { transform: scale(0) rotate(0deg); opacity: 1; }
+  50% { transform: scale(1.5) rotate(180deg); opacity: 0.8; }
+  100% { transform: scale(0) rotate(360deg); opacity: 0; }
+}
+
+/* Heart animation for check-in */
+.heart-burst {
+  position: absolute;
+  font-size: 24px;
+  animation: heartBurst 0.8s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes heartBurst {
+  0% { transform: scale(0) translateY(0); opacity: 1; }
+  50% { transform: scale(1.5) translateY(-20px); opacity: 1; }
+  100% { transform: scale(1) translateY(-40px); opacity: 0; }
+}
+
+/* XP bar */
+.xp-bar {
+  @apply h-2 rounded-full bg-softYellow/30 overflow-hidden;
+}
+
+.xp-bar-fill {
+  @apply h-full rounded-full bg-softYellow transition-all duration-500;
+}
+
+/* Farm grass pattern */
+.farm-bg {
+  background-color: #D4E9D7;
+  background-image:
+    radial-gradient(circle at 20% 30%, #C5DBC8 2px, transparent 2px),
+    radial-gradient(circle at 80% 70%, #C5DBC8 2px, transparent 2px),
+    radial-gradient(circle at 40% 80%, #C5DBC8 1.5px, transparent 1.5px),
+    radial-gradient(circle at 60% 20%, #C5DBC8 1.5px, transparent 1.5px);
+  background-size: 100px 100px;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50;
+}
+
+/* Input styles */
+.cozy-input {
+  @apply w-full px-4 py-3 rounded-2xl border-2 border-softPeach bg-white/80;
+  @apply focus:outline-none focus:border-softPink focus:ring-2 focus:ring-softPink/30;
+  @apply placeholder:text-warmBrown/50;
+}
+
+/* Level badge */
+.level-badge {
+  @apply absolute -top-1 -right-1 w-6 h-6 rounded-full bg-softYellow;
+  @apply flex items-center justify-center text-xs font-bold text-darkBrown;
+  @apply border-2 border-white shadow-sm;
+}
+
+/* Coin display */
+.coin-display {
+  @apply flex items-center gap-1 px-3 py-1.5 rounded-full bg-softYellow/80;
+  @apply text-darkBrown font-semibold text-sm;
+}
+
+/* Safe area for mobile */
+@supports (padding: max(0px)) {
+  .safe-area-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  .safe-area-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
